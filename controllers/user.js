@@ -8,9 +8,9 @@ const Sequelize = require('sequelize');
 
 
 exports.postCase = (req, res, next) => {
-    const caseType = req.query.caseType;
+    const caseType = req.body.caseType;
     const name = req.body.name;
-    const area = req.body.city;
+    const area = req.body.country;
     const address = req.body.address;
     const uniqueSign = req.body.uniqueSign;
     const description = req.body.description;
@@ -303,9 +303,9 @@ exports.deleteCase = (req, res, next) => {
 exports.editCase = (req, res, next) => {
     const caseId = req.params.caseId;
     const userId = +req.params.userId;
-    const caseType = req.query.caseType;
+    const caseType = req.body.caseType;
     const name = req.body.name;
-    const area = req.body.city;
+    const area = req.body.country;
     const address = req.body.address;
     const uniqueSign = req.body.uniqueSign;
     const description = req.body.description;
