@@ -43,7 +43,7 @@ exports.postCase = (req, res, next) => {
             });
     } else if (caseType === "animal"){
         Animal
-            .create({ species: name, area, city, address, uniqueSign, description, phone, lat, lng, userId, image: imagePath, tag})
+            .create({ name, area, city, address, uniqueSign, description, phone, lat, lng, userId, image: imagePath, tag})
             .then(result => {
                 return res.status(201).json({ case: result, message: "Animal case was created successfully" });
             })
@@ -352,7 +352,7 @@ exports.editCase = (req, res, next) => {
                     error.statusCode = 403;
                     throw error;
                 } else {
-                    return theCase.update({ species: name, area, city, address, uniqueSign, description, phone, image, tag})
+                    return theCase.update({ name, area, city, address, uniqueSign, description, phone, image, tag})
                 }
             })
             .then(result => {

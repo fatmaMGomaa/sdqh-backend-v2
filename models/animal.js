@@ -11,7 +11,7 @@ const Animal = sequelize.define(
             allowNull: false,
             primaryKey: true
         },
-        species: {
+        name: {
             type: Sequelize.STRING,
             allowNull: false
         },
