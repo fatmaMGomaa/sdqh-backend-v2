@@ -19,6 +19,10 @@ const Human = sequelize.define(
             type: Sequelize.ENUM('مصر', 'الامارات', "السعودية"),
             defaultValue: 'مصر',
             allowNull: false
+		},
+		city: {
+            type: Sequelize.STRING,
+            allowNull: true
         },
         address: {
             type: Sequelize.TEXT,
@@ -45,7 +49,7 @@ const Human = sequelize.define(
             type: Sequelize.DECIMAL(9, 6),
             allowNull: false
         },
-		tags: {
+		tag: {
             type: Sequelize.ENUM("أخرى", "أطفال برفقة متسولين", "أطفال شوارع", "مسنون مشردون", "أغراض وجدت"),
             defaultValue: 'أخرى',
             allowNull: false

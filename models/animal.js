@@ -20,6 +20,10 @@ const Animal = sequelize.define(
             defaultValue: 'مصر',
             allowNull: false
         },
+        city: {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
         address: {
             type: Sequelize.TEXT,
             allowNull: false
@@ -45,7 +49,7 @@ const Animal = sequelize.define(
             type: Sequelize.DECIMAL(9, 6),
             allowNull: false
         },
-        tags: {
+        tag: {
             type: Sequelize.ENUM("أخرى", "حيوانات مصابة", "حيوانات وجدت", "حيوانات للتبني"),
             defaultValue: 'أخرى',
             allowNull: false

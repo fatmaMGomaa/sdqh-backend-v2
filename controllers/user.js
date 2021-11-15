@@ -11,6 +11,7 @@ exports.postCase = (req, res, next) => {
     const caseType = req.body.caseType;
     const name = req.body.name;
     const area = req.body.country;
+    const city = req.body.city;
     const address = req.body.address;
     const uniqueSign = req.body.uniqueSign;
     const description = req.body.description;
@@ -19,6 +20,7 @@ exports.postCase = (req, res, next) => {
     const lng = req.body.lng;
     const userId = req.body.userId;
     const image = req.body.image
+    const tag = req.body.tag
     // const image = req.file
 
     let imagePath;
@@ -32,7 +34,7 @@ exports.postCase = (req, res, next) => {
 
     if(caseType === "human"){
         Human
-            .create({ name, area, address, uniqueSign, description, phone, lat, lng, userId, image: imagePath})
+            .create({ name, area, city, address, uniqueSign, description, phone, lat, lng, userId, image: imagePath, tag})
             .then(result => {
                 return res.status(201).json({ case: result, message: "human case was created successfully" });
             })
@@ -41,7 +43,7 @@ exports.postCase = (req, res, next) => {
             });
     } else if (caseType === "animal"){
         Animal
-            .create({ species: name, area, address, uniqueSign, description, phone, lat, lng, userId, image: imagePath })
+            .create({ species: name, area, city, address, uniqueSign, description, phone, lat, lng, userId, image: imagePath, tag})
             .then(result => {
                 return res.status(201).json({ case: result, message: "Animal case was created successfully" });
             })
@@ -306,11 +308,14 @@ exports.editCase = (req, res, next) => {
     const caseType = req.body.caseType;
     const name = req.body.name;
     const area = req.body.country;
+    const city = req.body.city;
     const address = req.body.address;
     const uniqueSign = req.body.uniqueSign;
     const description = req.body.description;
     const phone = req.body.mobileNumber;
     const image = req.body.image
+    const tag = req.body.tag
+
     if (caseType === "human") {
         Human.findByPk(caseId)
             .then(theCase => {
@@ -324,7 +329,7 @@ exports.editCase = (req, res, next) => {
                     error.statusCode = 403;
                     throw error;
                 } else {
-                    return theCase.update({ name, area, address, uniqueSign, description, phone, image})
+                    return theCase.update({ name, area, city, address, uniqueSign, description, phone, image, tag})
                 }
             })
             .then(result => {
@@ -347,7 +352,7 @@ exports.editCase = (req, res, next) => {
                     error.statusCode = 403;
                     throw error;
                 } else {
-                    return theCase.update({ species: name, area, address, uniqueSign, description, phone, image })
+                    return theCase.update({ species: name, area, city, address, uniqueSign, description, phone, image, tag})
                 }
             })
             .then(result => {
