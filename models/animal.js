@@ -44,6 +44,11 @@ const Animal = sequelize.define(
         lng: {
             type: Sequelize.DECIMAL(9, 6),
             allowNull: false
+        },
+        tags: {
+            type: Sequelize.ENUM("أخرى", "حيوانات مصابة", "حيوانات وجدت", "حيوانات للتبني"),
+            defaultValue: 'أخرى',
+            allowNull: false
         }
     },
     {

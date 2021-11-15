@@ -13,7 +13,7 @@ router.post('/addCase', isAuthenticated, userControllers.postCase)
 router.get('/allCases', userControllers.getAllCases)
 router.get('/user/:id',userControllers.getUser)
 router.get('/users',userControllers.getUsers)
-router.get('/userCases', isAuthenticated,userControllers.getUserCases)
+router.get('/userCases', userControllers.getUserCases)
 router.get('/singleCase/:caseId', userControllers.getSingleCase)
 router.post('/addComment', isAuthenticated, userControllers.postComment)
 router.delete('/deleteCase/:caseId/:userId', isAuthenticated,  userControllers.deleteCase);

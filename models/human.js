@@ -44,6 +44,11 @@ const Human = sequelize.define(
         lng: {
             type: Sequelize.DECIMAL(9, 6),
             allowNull: false
+        },
+		tags: {
+            type: Sequelize.ENUM("أخرى", "أطفال برفقة متسولين", "أطفال شوارع", "مسنون مشردون", "أغراض وجدت"),
+            defaultValue: 'أخرى',
+            allowNull: false
         }
     },
     {
