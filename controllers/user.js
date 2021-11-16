@@ -55,10 +55,15 @@ exports.postCase = (req, res, next) => {
 
 exports.getAllCases = (req, res, next) => {
     const caseType = req.query.caseType;
+    let filters = {}
+    if(req.query.filter_country){filters.area=req.query.filter_country};
+    if(req.query.filter_city){filters.city=req.query.filter_city};
+    if(req.query.filter_tag){filters.tag=req.query.filter_tag};
 
     if (caseType === "human") {
         Human
             .findAll({
+                where: filters,
                 order: [['createdAt', 'DESC']]
             })
             .then(result => {
@@ -70,6 +75,7 @@ exports.getAllCases = (req, res, next) => {
     } else if (caseType === "animal") {
         Animal
             .findAll({
+                where: filters,
                 order: [['createdAt', 'DESC']]
             })
             .then(result => {

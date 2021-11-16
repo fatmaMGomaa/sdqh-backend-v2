@@ -16,13 +16,13 @@ const Human = sequelize.define(
             allowNull: false
         },
         area: {
-            type: Sequelize.ENUM('مصر', 'الامارات', "السعودية"),
+            type: Sequelize.ENUM('مصر', 'الإمارات', "السعودية"),
             defaultValue: 'مصر',
             allowNull: false
-		},
-		city: {
-            type: Sequelize.STRING,
-            allowNull: true
+        },
+        city: {
+                type: Sequelize.STRING,
+                allowNull: true
         },
         address: {
             type: Sequelize.TEXT,
